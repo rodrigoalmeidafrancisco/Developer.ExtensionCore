@@ -5,6 +5,8 @@ Pacote de métodos extensíveis para agilizar na validação e manipulação do 
 | ------- | ----- | ----- |
 | `Developer.ExtensionCore` | [![NuGet](https://img.shields.io/nuget/v/Developer.ExtensionCore.svg)](https://nuget.org/packages/Developer.ExtensionCore) | [![Nuget](https://img.shields.io/nuget/dt/Developer.ExtensionCore.svg)](https://nuget.org/packages/Developer.ExtensionCore) |
 
+<br />
+
 # Dependências
 - [.NET Standard 2.0](https://docs.microsoft.com/pt-br/dotnet/standard/net-standard)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) 13.0.3
@@ -14,9 +16,10 @@ Pacote de métodos extensíveis para agilizar na validação e manipulação do 
 - [System.IdentityModel.Tokens.Jwt](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) 6.28.1
 - [System.Text.Json](https://www.nuget.org/packages/System.Text.Json) 7.0.2
 
+<br />
+
 # Instalação
 Este pacote está disponível através de Pacotes Nuget: https://www.nuget.org/packages/Developer.ExtensionCore/
-
 
 **Nuget**
 ```
