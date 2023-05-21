@@ -120,15 +120,18 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (stream is MemoryStream)
+                if (stream != null)
                 {
-                    result = ((MemoryStream)stream).ToArray();
-                }
+                    if (stream is MemoryStream)
+                    {
+                        result = ((MemoryStream)stream).ToArray();
+                    }
 
-                using (var memoryStream = new MemoryStream())
-                {
-                    stream.CopyTo(memoryStream);
-                    result = memoryStream.ToArray();
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        stream.CopyTo(memoryStream);
+                        result = memoryStream.ToArray();
+                    }
                 }
             }
             catch
@@ -151,7 +154,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!pathFile.IsNullOrEmptyOrWhiteSpace())
+                if (pathFile.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     using (FileStream imageFileStream = File.OpenRead(pathFile))
                     {

@@ -46,7 +46,7 @@ namespace Developer.ExtensionCore
         {
             var regex = new Regex(@"^[0-9]+$");
 
-            if (!val.IsNullOrEmptyOrWhiteSpace())
+            if (val.IsNullOrEmptyOrWhiteSpace() == false)
             {
                 return regex.IsMatch(val);
             }
@@ -63,7 +63,7 @@ namespace Developer.ExtensionCore
         {
             var regex = new Regex(@"^([\'\.\^\~\´\`\\áÁ\\àÀ\\ãÃ\\âÂ\\éÉ\\èÈ\\êÊ\\íÍ\\ìÌ\\óÓ\\òÒ\\õÕ\\ôÔ\\úÚ\\ùÙ\\çÇaA-zZ]+)+((\s[\'\.\^\~\´\`\\áÁ\\àÀ\\ãÃ\\âÂ\\éÉ\\èÈ\\êÊ\\íÍ\\ìÌ\\óÓ\\òÒ\\õÕ\\ôÔ\\úÚ\\ùÙ\\çÇaA-zZ]+)+)?$");
 
-            if (!val.IsNullOrEmptyOrWhiteSpace())
+            if (val.IsNullOrEmptyOrWhiteSpace() == false)
             {
                 return regex.IsMatch(val);
             }
@@ -82,7 +82,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     var regex = new Regex(@"([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})");
 
@@ -172,7 +172,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     var regex = new Regex(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})");
 
@@ -261,7 +261,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     Regex regex = new Regex(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
                     result = regex.IsMatch(val);
