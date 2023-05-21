@@ -1,4 +1,4 @@
-﻿namespace Developer.TestProject.Dto
+﻿namespace Developer.TestProject.FilesTest
 {
     public enum EnumTest
     {

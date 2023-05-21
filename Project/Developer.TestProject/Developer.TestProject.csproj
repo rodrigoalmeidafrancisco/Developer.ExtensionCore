@@ -19,4 +19,10 @@
     <ProjectReference Include="..\Developer.ExtensionCore\Developer.ExtensionCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="FilesTest\ImageTest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

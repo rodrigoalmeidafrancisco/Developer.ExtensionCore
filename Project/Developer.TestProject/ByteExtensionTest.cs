@@ -1,5 +1,5 @@
 ﻿using Developer.ExtensionCore;
-using Developer.TestProject.Dto;
+using Developer.TestProject.FilesTest;
 
 namespace Developer.TestProject
 {
@@ -60,6 +60,23 @@ namespace Developer.TestProject
             Assert.AreEqual(0, result.Value);
         }
 
+        [TestMethod]
+        public void Test_ToBytes_Stream()
+        {
+            string pathFile = @"FilesTest\ImageTest.png";
+            using (FileStream fileStream = File.Open(pathFile, FileMode.Open))
+            {
+                var fileInBytes = fileStream.ToBytes();
+                Assert.AreNotEqual(null, fileInBytes);
+            }
+        }
 
+        [TestMethod]
+        public void Test_ToBytesPathFile()
+        {
+            string pathFile = @"FilesTest\ImageTest.png";
+            byte[] fileInBytes = pathFile.ToBytesPathFile();
+            Assert.AreNotEqual(null, fileInBytes);
+        }
     }
 }
