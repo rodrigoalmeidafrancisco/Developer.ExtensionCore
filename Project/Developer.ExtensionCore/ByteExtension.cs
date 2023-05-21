@@ -6,8 +6,7 @@ namespace Developer.ExtensionCore
     public static class ByteExtension
     {
         /// <summary>
-        /// Retorna o valor de uma "string" em byte. 
-        /// Caso não consiga converter, irá retornar 0.
+        /// Retorna o valor de uma "string" em byte. Caso não consiga converter, irá retornar 0.
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -17,7 +16,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     if (byte.TryParse(val, out byte aux))
                     {
@@ -34,8 +33,34 @@ namespace Developer.ExtensionCore
         }
 
         /// <summary>
-        /// Retorna o valor de um "Enum" em byte. 
-        /// Caso não consiga converter, irá retornar 0.
+        /// Retorna o valor de uma "string" em byte?. Caso não consiga converter, irá retornar NULL.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static byte? ToByteNull(this string val)
+        {
+            byte? result = null;
+
+            try
+            {
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
+                {
+                    if (byte.TryParse(val, out byte aux))
+                    {
+                        result = aux;
+                    }
+                }
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Retorna o valor de um "Enum" em byte. Caso não consiga converter, irá retornar 0.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -54,6 +79,31 @@ namespace Developer.ExtensionCore
             catch
             {
                 result = 0;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Retorna o valor de um "Enum" em byte?. Caso não consiga converter, irá retornar null.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte? ToByteNull(this Enum value)
+        {
+            byte? result = null;
+
+            try
+            {
+                if (value != null)
+                {
+                    string valor = Convert.ChangeType(value, value.GetTypeCode()).ToString();
+                    result = valor == null ? (byte)0 : valor.ToByte();
+                }
+            }
+            catch
+            {
+                result = null;
             }
 
             return result;
