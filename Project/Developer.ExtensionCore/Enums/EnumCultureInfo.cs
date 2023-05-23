@@ -2,7 +2,7 @@
 
 namespace Developer.ExtensionCore.Enums
 {
-    public enum EnumCountryCulture
+    public enum EnumCultureInfo
     {
         [Description("aa-DJ")]
         Afar_Djibouti = 0,

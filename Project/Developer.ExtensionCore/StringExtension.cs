@@ -60,7 +60,7 @@ namespace Developer.ExtensionCore
         /// <param name="val"></param>
         /// <param name="culture"></param>
         /// <returns></returns>
-        public static string ToDateCulture(this DateTime val, EnumCountryCulture culture)
+        public static string ToDateCulture(this DateTime val, EnumCultureInfo culture)
         {
             string result;
 
@@ -155,7 +155,7 @@ namespace Developer.ExtensionCore
         /// <param name="val"></param>
         /// <param name="culture"></param>
         /// <returns></returns>
-        public static string ToDateExtensive1(this DateTime val, EnumCountryCulture culture)
+        public static string ToDateExtensive1(this DateTime val, EnumCultureInfo culture)
         {
             string result = string.Empty;
 
@@ -224,7 +224,7 @@ namespace Developer.ExtensionCore
         /// <param name="val"></param>
         /// <param name="culture"></param>
         /// <returns></returns>
-        public static string ToDateExtensive2(this DateTime val, EnumCountryCulture culture)
+        public static string ToDateExtensive2(this DateTime val, EnumCultureInfo culture)
         {
             string result = string.Empty;
 
