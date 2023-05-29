@@ -11,25 +11,17 @@ namespace Developer.ExtensionCore
         /// <summary>
         /// Obtém o valor do atributo "Description" do Enum, caso não tenha retorna o texto do próprio Enum.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="val"></param>
         /// <returns></returns>
-        public static string GetDescription(this Enum value)
+        public static string GetDescription(this Enum val)
         {
             string result;
 
             try
             {
-                FieldInfo fi = value.GetType().GetField(value.ToString());
-                DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-                if (attributes.Length > 0)
-                {
-                    result = attributes[0].Description;
-                }
-                else
-                {
-                    result = value.ToString();
-                }
+                FieldInfo fieldInfo = val.GetType().GetField(val.ToString());
+                DescriptionAttribute[] attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                result = attributes.Length > 0 ? attributes[0].Description : val.ToString();
             }
             catch
             {
@@ -44,25 +36,20 @@ namespace Developer.ExtensionCore
         /// Caso ocorra erro, retorna uma lista em branco.
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<string> GetListDescriptionEnum<T>()
+        public static IEnumerable<string> GetListDescription<T>()
         {
             List<string> listResult = new List<string>();
 
             try
             {
+                FieldInfo fieldInfo = null;
+                DescriptionAttribute[] attributes = null;
+
                 foreach (T item in Enum.GetValues(typeof(T)))
                 {
-                    FieldInfo fi = item.GetType().GetField(item.ToString());
-                    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-                    if (attributes.Length > 0)
-                    {
-                        listResult.Add(attributes[0].Description);
-                    }
-                    else
-                    {
-                        listResult.Add(item.ToString());
-                    }
+                    fieldInfo = item.GetType().GetField(item.ToString());
+                    attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    listResult.Add(attributes.Length > 0 ? attributes[0].Description : item.ToString());
                 };
             }
             catch
@@ -80,50 +67,43 @@ namespace Developer.ExtensionCore
         /// <typeparam name="T"></typeparam>
         /// <param name="firstName"></param>
         /// <returns></returns>
-        //public static IEnumerable<KeyValuePair<int, string>> GetListDescriptionEnumDropDown<T>(string firstName = "Selecionar...")
-        //{
-        //    List<KeyValuePair<int, string>> listResult = new List<KeyValuePair<int, string>>
-        //    {
-        //        new KeyValuePair<int, string>(-1, firstName)
-        //    };
+        public static IEnumerable<KeyValuePair<int, string>> GetListDescriptionDropDown<T>(int firstVal = -1, string firstName = "Selecione...")
+        {
+            List<KeyValuePair<int, string>> listResult = new List<KeyValuePair<int, string>>
+            {
+                new KeyValuePair<int, string>(firstVal, firstName)
+            };
 
-        //    try
-        //    {
-        //        List<KeyValuePair<int, string>> listAux = new List<KeyValuePair<int, string>>();
+            try
+            {
+                List<KeyValuePair<int, string>> listAux = new List<KeyValuePair<int, string>>();
 
-        //        int key = 0;
-        //        string value = firstName;
+                int key = 0;
+                string value = firstName;
+                FieldInfo fieldInfo = null;
+                DescriptionAttribute[] attributes = null;
 
-        //        foreach (T item in Enum.GetValues(typeof(T)))
-        //        {
-        //            Enum.TryParse(item.ToString(), out object resultEnum);
-        //            key = (int)resultEnum;
+                foreach (T item in Enum.GetValues(typeof(T)))
+                {
+                    fieldInfo = item.GetType().GetField(item.ToString());
+                    attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-        //            FieldInfo fi = item.GetType().GetField(item.ToString());
-        //            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    key = (int)fieldInfo.GetValue(item);
+                    value = attributes.Length > 0 ? attributes[0].Description : item.ToString();
 
-        //            if (attributes.Length > 0)
-        //            {
-        //                value = attributes[0].Description;
-        //            }
-        //            else
-        //            {
-        //                value = item.ToString();
-        //            }
+                    listAux.Add(new KeyValuePair<int, string>(key, value));
+                };
 
-        //            listAux.Add(new KeyValuePair<int, string>(key, value));
-        //        };
+                listAux = listAux.OrderBy(x => x.Value).ToList();
+                listAux.ForEach(item => listResult.Add(item));
+            }
+            catch
+            {
+                listResult = new List<KeyValuePair<int, string>>();
+            }
 
-        //        listAux = listAux.OrderBy(x => x.Value).ToList();
-        //        listAux.ForEach(item => listResult.Add(item));
-        //    }
-        //    catch
-        //    {
-        //        listResult = new List<KeyValuePair<int, string>>();
-        //    }
-
-        //    return listResult;
-        //}
+            return listResult;
+        }
 
     }
 }

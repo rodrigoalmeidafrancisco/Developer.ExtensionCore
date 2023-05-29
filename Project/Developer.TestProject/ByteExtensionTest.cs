@@ -1,5 +1,5 @@
 ﻿using Developer.ExtensionCore;
-using Developer.TestProject.FilesTest;
+using Developer.ExtensionCore.Enums;
 
 namespace Developer.TestProject
 {
@@ -49,15 +49,15 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_ToByte_Enum()
         {
-            byte result = EnumTest.Valor0.ToByte();
-            Assert.AreEqual(0, result);
+            byte result = EnumCultureInfo.Afar_Djibouti.ToByte();
+            Assert.AreEqual(1, result);
         }
 
         [TestMethod]
         public void Test_ToByteNull_Enum()
         {
-            byte? result = EnumTest.Valor0.ToByteNull();
-            Assert.AreEqual(0, result.Value);
+            byte? result = EnumCultureInfo.Afar_Djibouti.ToByteNull();
+            Assert.AreEqual(1, result.Value);
         }
 
         [TestMethod]
