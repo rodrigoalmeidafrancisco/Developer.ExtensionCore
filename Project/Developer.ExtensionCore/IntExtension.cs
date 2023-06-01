@@ -79,7 +79,7 @@ namespace Developer.ExtensionCore
         }
 
         /// <summary>
-        /// Obtém o valor do item do enum.
+        /// Obtém o enum e retorna o valor do item do enum em int.
         /// Caso não consiga converter, retorna int.MinValue.
         /// </summary>
         /// <param name="value"></param>
@@ -177,8 +177,8 @@ namespace Developer.ExtensionCore
         }
 
         /// <summary>
-        /// Obtém o valor do item do enum.
-        /// Caso não consiga converter, retorna null.
+        /// Obtém o enum e retorna o valor do item do enum em int.
+        /// Caso não consiga converter, retorna int.MinValue.
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>

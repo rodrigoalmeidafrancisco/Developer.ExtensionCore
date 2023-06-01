@@ -58,16 +58,16 @@ namespace Developer.ExtensionCore
         /// Caso ocorra algum erro, irá retornar string.Empty;
         /// </summary>
         /// <param name="val"></param>
-        /// <param name="culture"></param>
+        /// <param name="enumCultureInfo"></param>
         /// <returns></returns>
-        public static string ToDateCulture(this DateTime val, EnumCultureInfo culture)
+        public static string ToDateCulture(this DateTime val, EnumCultureInfo enumCultureInfo)
         {
             string result;
 
             try
             {
-                string description = culture.GetDescription();
-                result = val.ToString(CultureInfo.CreateSpecificCulture(description));
+                string cultInfo = enumCultureInfo.GetDescription();
+                result = val.ToString(CultureInfo.CreateSpecificCulture(cultInfo));
             }
             catch
             {
@@ -90,7 +90,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace() && val.Length > maxCaracteres)
+                if (val.IsNullOrEmptyOrWhiteSpace() == false && val.Length > maxCaracteres)
                 {
                     if (ellipsis == false)
                     {
@@ -127,7 +127,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (culture.Equals("pt-BR", StringComparison.OrdinalIgnoreCase))
+                if (culture.Equals(EnumCultureInfo.Portuguese_Brazil.GetDescription(), StringComparison.OrdinalIgnoreCase))
                 {
                     CultureInfo cultureInfo = new CultureInfo(culture);
                     DateTimeFormatInfo dif = cultureInfo.DateTimeFormat;
@@ -157,30 +157,7 @@ namespace Developer.ExtensionCore
         /// <returns></returns>
         public static string ToDateExtensive1(this DateTime val, EnumCultureInfo culture)
         {
-            string result = string.Empty;
-
-            try
-            {
-                string description = culture.GetDescription();
-
-                if (description.Equals("pt-BR", StringComparison.OrdinalIgnoreCase))
-                {
-                    CultureInfo cultureInfo = new CultureInfo(description);
-                    DateTimeFormatInfo dif = cultureInfo.DateTimeFormat;
-
-                    string day = val.Day.ToString();
-                    string year = val.Year.ToString();
-                    string month = cultureInfo.TextInfo.ToTitleCase(dif.GetMonthName(val.Month));
-                    string weekday = cultureInfo.TextInfo.ToTitleCase(dif.GetDayName(val.DayOfWeek));
-
-                    result = $"{weekday}, {day} de {month} de {year}";
-                }
-            }
-            catch
-            {
-                result = string.Empty;
-            }
-
+            string result = val.ToDateExtensive1(culture.GetDescription());
             return result;
         }
 
@@ -226,29 +203,7 @@ namespace Developer.ExtensionCore
         /// <returns></returns>
         public static string ToDateExtensive2(this DateTime val, EnumCultureInfo culture)
         {
-            string result = string.Empty;
-
-            try
-            {
-                string description = culture.GetDescription();
-
-                if (description.Equals("pt-BR", StringComparison.OrdinalIgnoreCase))
-                {
-                    CultureInfo cultureInfo = new CultureInfo(description);
-                    DateTimeFormatInfo dif = cultureInfo.DateTimeFormat;
-
-                    string day = val.Day.ToString();
-                    string year = val.Year.ToString();
-                    string month = cultureInfo.TextInfo.ToTitleCase(dif.GetMonthName(val.Month));
-
-                    result = $"{day} de {month} de {year}";
-                }
-            }
-            catch
-            {
-                result = string.Empty;
-            }
-
+            string result = val.ToDateExtensive2(culture.GetDescription());
             return result;
         }
 
@@ -263,7 +218,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     Regex regex = new Regex(@"[^\d]");
                     result = regex.Replace(val, "");
@@ -282,9 +237,9 @@ namespace Developer.ExtensionCore
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string BytesToBase64String(this byte[] value)
+        public static string ToBytesForBase64String(this byte[] val)
         {
-            return Convert.ToBase64String(value, 0, value.Length);
+            return Convert.ToBase64String(val);
         }
 
         /// <summary>
