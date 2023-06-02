@@ -8,45 +8,57 @@ namespace Developer.ExtensionCore
 {
     public static class QrCodeExtension
     {
-        public static string GetBase64String(string valueQrCode)
+        /// <summary>
+        /// Cria um QRCode a partir do valor informado.
+        /// Caso não tenha sido passado um valor irá retornar um QRCode com a frase "Not found..."
+        /// Caso ocorra erro na criação, retorna null.
+        /// </summary>
+        /// <param name="valueQrCode"></param>
+        /// <returns></returns>
+        public static byte[] ToCreateQrCode(this string valueQrCode)
         {
-            string imagemQrCode = string.Empty;
+            byte[] imageQrCode = null;
 
-            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            try
             {
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(valueQrCode, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                valueQrCode = valueQrCode.IsNullOrEmptyOrWhiteSpace() == false ? valueQrCode : "Not found...";
 
-                using (MemoryStream memoryStream = new MemoryStream())
+                using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
                 {
-                    qrCodeImage.Save(memoryStream, ImageFormat.Png);
-                    imagemQrCode = Convert.ToBase64String(memoryStream.ToArray());
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(valueQrCode, QRCodeGenerator.ECCLevel.Q);
+                    QRCode qrCode = new QRCode(qrCodeData);
+                    Bitmap qrCodeImage = qrCode.GetGraphic(20);
+
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        qrCodeImage.Save(memoryStream, ImageFormat.Png);
+                        imageQrCode = memoryStream.ToArray();
+                    }
                 }
             }
-
-            return imagemQrCode;
-        }
-
-        public static byte[] GetArray(string valueQrCode)
-        {
-            byte[] imagemQrCode = null;
-
-            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            catch
             {
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(valueQrCode, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
-                Bitmap qrCodeImage = qrCode.GetGraphic(20);
-
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    qrCodeImage.Save(memoryStream, ImageFormat.Png);
-                    imagemQrCode = memoryStream.ToArray();
-                }
+                imageQrCode = null;
             }
 
-            return imagemQrCode;
+            return imageQrCode;
         }
+
+        /// <summary>
+        /// Cria um QRCode a partir do valor informado.
+        /// Caso não tenha sido passado um valor irá retornar um QRCode com a frase "Not found..."
+        /// Caso ocorra erro na criação, retorna null.
+        /// </summary>
+        /// <param name="valueQrCode"></param>
+        /// <returns></returns>
+        public static string ToCreateQrCodeBase64(this string valueQrCode, bool complete)
+        {
+            byte[] imageQrCode = valueQrCode.ToCreateQrCode();
+            string imageConvert = imageQrCode.ToBase64String();
+            return complete ? $"data:image/png;base64,{imageConvert}" : imageConvert;
+        }
+
+
 
     }
 }

@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>Developer.ExtensionCore</PackageId>
-		<Version>2.0.1</Version>
+		<Version>2.1.0</Version>
 		<Authors>Rodrigo de Almeida Francisco</Authors>
 		<Product>Developer.ExtensionCore</Product>
 		<Description>
@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="QRCoder" Version="1.4.3" />
+		<PackageReference Include="QRCoder" Version="1.4.2" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.0.1" />
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
 		<PackageReference Include="System.Text.Json" Version="7.0.2" />
 	</ItemGroup>
 

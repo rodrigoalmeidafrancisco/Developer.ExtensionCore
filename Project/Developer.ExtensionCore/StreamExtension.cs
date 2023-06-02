@@ -6,7 +6,14 @@ namespace Developer.ExtensionCore
 {
     public static class StreamExtension
     {
-        public static Stream ToBitmapStream(this Bitmap bitmap, ImageFormat imageFormat)
+        /// <summary>
+        /// Converte um Bitmap (System.Drawing) para Stream (System.IO).
+        /// Caso não consiga converter, retorna null.
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <param name="imageFormat"></param>
+        /// <returns></returns>
+        public static Stream ToBitmapForStream(this Bitmap bitmap, ImageFormat imageFormat)
         {
             try
             {
@@ -25,7 +32,13 @@ namespace Developer.ExtensionCore
             }
         }
 
-        public static MemoryStream ToMemoryStream(this byte[] bytes)
+        /// <summary>
+        /// Converte um byte[] para MemoryStream (System.IO).
+        /// Caso não consiga converter, retorna null.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static MemoryStream ToBytesForMemoryStream(this byte[] bytes)
         {
             try
             {
@@ -36,8 +49,6 @@ namespace Developer.ExtensionCore
                 return null;
             }
         }
-
-
 
     }
 }

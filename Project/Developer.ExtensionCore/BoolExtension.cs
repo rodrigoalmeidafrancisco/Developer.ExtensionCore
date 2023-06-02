@@ -5,6 +5,8 @@ namespace Developer.ExtensionCore
 {
     public static class BoolExtension
     {
+        #region string
+
         /// <summary>
         /// Valida se uma string é nula ou vazia.
         /// </summary>
@@ -36,238 +38,6 @@ namespace Developer.ExtensionCore
         }
 
         /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this DateTime val, DateTime start, DateTime end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this int val, int start, int end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this long val, long start, long end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this decimal val, decimal start, decimal end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this float val, float start, float end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this double val, double start, double end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verifica se um determinado valor está entre o intervalo informado
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static bool IsBetween(this TimeSpan val, TimeSpan start, TimeSpan end)
-        {
-            return val >= start && val <= end;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this DateTime val, DateTime comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this int val, int comparer)
-        {
-            return val > comparer;
-        }
-
-        public static bool IsGreaterThan(this long val, long comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this decimal val, decimal comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this float val, float comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this double val, double comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é maior que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsGreaterThan(this TimeSpan val, TimeSpan comparer)
-        {
-            return val > comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this DateTime val, DateTime comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this int val, int comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this long val, long comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this decimal val, decimal comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this float val, float comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this double val, double comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
-        /// Verfica se um determinado valor é menor que a comparação.
-        /// </summary>
-        /// <param name="val"></param>
-        /// <param name="comparer"></param>
-        /// <returns></returns>
-        public static bool IsLowerThan(this TimeSpan val, TimeSpan comparer)
-        {
-            return val < comparer;
-        }
-
-        /// <summary>
         /// Verifica se a string possui apenas números
         /// </summary>
         /// <param name="val"></param>
@@ -276,7 +46,7 @@ namespace Developer.ExtensionCore
         {
             var regex = new Regex(@"^[0-9]+$");
 
-            if (!val.IsNullOrEmptyOrWhiteSpace())
+            if (val.IsNullOrEmptyOrWhiteSpace() == false)
             {
                 return regex.IsMatch(val);
             }
@@ -293,7 +63,7 @@ namespace Developer.ExtensionCore
         {
             var regex = new Regex(@"^([\'\.\^\~\´\`\\áÁ\\àÀ\\ãÃ\\âÂ\\éÉ\\èÈ\\êÊ\\íÍ\\ìÌ\\óÓ\\òÒ\\õÕ\\ôÔ\\úÚ\\ùÙ\\çÇaA-zZ]+)+((\s[\'\.\^\~\´\`\\áÁ\\àÀ\\ãÃ\\âÂ\\éÉ\\èÈ\\êÊ\\íÍ\\ìÌ\\óÓ\\òÒ\\õÕ\\ôÔ\\úÚ\\ùÙ\\çÇaA-zZ]+)+)?$");
 
-            if (!val.IsNullOrEmptyOrWhiteSpace())
+            if (val.IsNullOrEmptyOrWhiteSpace() == false)
             {
                 return regex.IsMatch(val);
             }
@@ -312,7 +82,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     var regex = new Regex(@"([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})");
 
@@ -402,7 +172,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     var regex = new Regex(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})");
 
@@ -491,7 +261,7 @@ namespace Developer.ExtensionCore
 
             try
             {
-                if (!val.IsNullOrEmptyOrWhiteSpace())
+                if (val.IsNullOrEmptyOrWhiteSpace() == false)
                 {
                     Regex regex = new Regex(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
                     result = regex.IsMatch(val);
@@ -504,6 +274,601 @@ namespace Developer.ExtensionCore
 
             return result;
         }
+
+        #endregion string
+
+        #region IsBetween
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this DateTime val, DateTime start, DateTime end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this DateTime? val, DateTime? start, DateTime? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this int val, int start, int end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this int? val, int? start, int? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this long val, long start, long end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this long? val, long? start, long? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this decimal val, decimal start, decimal end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this decimal? val, decimal? start, decimal? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this float val, float start, float end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this float? val, float? start, float? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this double val, double start, double end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this double? val, double? start, double? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this TimeSpan val, TimeSpan start, TimeSpan end)
+        {
+            return val >= start && val <= end;
+        }
+
+        /// <summary>
+        /// Verifica se um determinado valor está entre o intervalo informado
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool IsBetween(this TimeSpan? val, TimeSpan? start, TimeSpan? end)
+        {
+            if (val.HasValue && start.HasValue && end.HasValue)
+            {
+                return val.Value.IsBetween(start.Value, end.Value);
+            }
+
+            return false;
+        }
+
+        #endregion IsBetween
+
+        #region IsGreaterThan
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this DateTime val, DateTime compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this DateTime? val, DateTime? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this int val, int compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this int? val, int? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this long val, long compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this long? val, long? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this decimal val, decimal compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this decimal? val, decimal? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this float val, float compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this float? val, float? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this double val, double compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this double? val, double? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this TimeSpan val, TimeSpan compare)
+        {
+            return val > compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é maior que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsGreaterThan(this TimeSpan? val, TimeSpan? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsGreaterThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        #endregion IsGreaterThan
+
+        #region IsLowerThan
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this DateTime val, DateTime compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this DateTime? val, DateTime? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this int val, int compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this int? val, int? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this long val, long compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this long? val, long? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this decimal val, decimal compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this decimal? val, decimal? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this float val, float compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this float? val, float? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this double val, double compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this double? val, double? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this TimeSpan val, TimeSpan compare)
+        {
+            return val < compare;
+        }
+
+        /// <summary>
+        /// Verfica se um determinado valor é menor que a comparação.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
+        public static bool IsLowerThan(this TimeSpan? val, TimeSpan? compare)
+        {
+            if (val.HasValue && compare.HasValue)
+            {
+                return val.Value.IsLowerThan(compare.Value);
+            }
+
+            return false;
+        }
+
+        #endregion IsLowerThan
 
     }
 }

@@ -3,44 +3,64 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using Developer.ExtensionCore.Entities;
 
 namespace Developer.ExtensionCore
 {
     public static class EmailExtension
     {
-        public static async Task<KeyValuePair<bool, string>> SendMailAsync(EmailSettings emailSettings)
+        public static async Task<KeyValuePair<bool, string>> SendMailAsync(this EmailSettings emailSettings)
         {
             bool result = false;
             string message = string.Empty;
 
             try
             {
-                using (SmtpClient smtpClient = new SmtpClient(emailSettings.Host, emailSettings.Port))
+                using (MailMessage mail = new MailMessage())
                 {
-                    smtpClient.Credentials = new NetworkCredential(emailSettings.UserName, emailSettings.Password);
+                    //De
+                    mail.From = new MailAddress(emailSettings.Address, emailSettings.DisplayName, emailSettings.DisplayNameEncoding);
 
-                    using (MailMessage mail = new MailMessage())
+                    //Para
+                    if (emailSettings.ListTo != null && emailSettings.ListTo.Any())
                     {
-                        mail.Subject = emailSettings.Title;
-                        mail.From = new MailAddress(emailSettings.FromAddress, emailSettings.FromDisplayName, emailSettings.FromDisplayNameEncoding);
-
-                        mail.IsBodyHtml = emailSettings.IsBodyHtml;
-                        mail.Body = emailSettings.Body;
-                        mail.BodyEncoding = emailSettings.BodyEncoding;
-
-                        if (emailSettings.ListTo != null && emailSettings.ListTo.Any())
-                        {
-                            foreach (var item in emailSettings.ListTo)
-                            {
-                                mail.To.Add(item.Trim());
-                            }
-                        }
-
-                        await smtpClient.SendMailAsync(mail);
-                        result = true;
+                        emailSettings.ListTo.ForEach(item => mail.To.Add(item.Trim()));
                     }
+
+                    //Para CC
+                    if (emailSettings.ListCC != null && emailSettings.ListCC.Any())
+                    {
+                        emailSettings.ListCC.ForEach(item => mail.CC.Add(item.Trim()));
+                    }
+
+                    //Arquivos anexos ao e-mail
+                    if (emailSettings.ListAttachment != null && emailSettings.ListAttachment.Any())
+                    {
+                        emailSettings.ListAttachment.ForEach(item => mail.Attachments.Add(item));
+                    }
+
+                    //Título
+                    mail.SubjectEncoding = emailSettings.SubjectEncoding;
+                    mail.Subject = emailSettings.Subject;
+
+                    //Corpo do E-mail
+                    mail.IsBodyHtml = emailSettings.IsBodyHtml;
+                    mail.BodyEncoding = emailSettings.BodyEncoding;
+                    mail.Body = emailSettings.Body;
+
+                    //Prioridade
+                    mail.Priority = emailSettings.Priority;
+
+                    using (SmtpClient smtpClient = new SmtpClient(emailSettings.Host, emailSettings.Port))
+                    {
+                        smtpClient.EnableSsl = emailSettings.EnableSSL;
+                        smtpClient.UseDefaultCredentials = emailSettings.UseDefaultCredentials;
+                        smtpClient.Credentials = new NetworkCredential(emailSettings.UserName, emailSettings.UserPassword);
+                        await smtpClient.SendMailAsync(mail);
+                    }
+
+                    result = true;
                 }
             }
             catch (Exception ex)
@@ -51,50 +71,6 @@ namespace Developer.ExtensionCore
             return new KeyValuePair<bool, string>(result, message);
         }
 
-        public class EmailSettings
-        {
-            public EmailSettings()
-            {
-                FromDisplayNameEncoding = Encoding.UTF8;
-                BodyEncoding = Encoding.UTF8;
-            }
-
-            public EmailSettings(Encoding fromDisplayNameEncoding, Encoding bodyEncoding)
-            {
-                FromDisplayNameEncoding = fromDisplayNameEncoding;
-                BodyEncoding = bodyEncoding;
-            }
-
-            public EmailSettings(string host, int port, string userName, string password, string title, string fromAddress, string fromDisplayName,
-                Encoding fromDisplayNameEncoding, bool isBodyHtml, string body, Encoding bodyEncoding, List<string> listTo)
-            {
-                Host = host;
-                Port = port;
-                UserName = userName;
-                Password = password;
-                Title = title;
-                FromAddress = fromAddress;
-                FromDisplayName = fromDisplayName;
-                FromDisplayNameEncoding = fromDisplayNameEncoding;
-                IsBodyHtml = isBodyHtml;
-                Body = body;
-                BodyEncoding = bodyEncoding;
-                ListTo = listTo == null ? new List<string>() : listTo;
-            }
-
-            public string Host { get; set; }
-            public int Port { get; set; }
-            public string UserName { get; set; }
-            public string Password { get; set; }
-            public string Title { get; set; }
-            public string FromAddress { get; set; }
-            public string FromDisplayName { get; set; }
-            public Encoding FromDisplayNameEncoding { get; set; }
-            public bool IsBodyHtml { get; set; }
-            public string Body { get; set; }
-            public Encoding BodyEncoding { get; set; }
-            public List<string> ListTo { get; set; }
-        }
 
     }
 }
