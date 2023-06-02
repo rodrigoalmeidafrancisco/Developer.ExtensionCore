@@ -1,5 +1,6 @@
 ﻿using Developer.ExtensionCore.Enums;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -237,7 +238,7 @@ namespace Developer.ExtensionCore
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string ToBytesForBase64String(this byte[] val)
+        public static string ToBase64String(this byte[] val)
         {
             return Convert.ToBase64String(val);
         }
@@ -275,5 +276,22 @@ namespace Developer.ExtensionCore
             return result;
         }
 
+        /// <summary>
+        /// Obtém o valor do Stopwatch em string (hh:mm:ss:mm)
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="finalizeStopwatch">True = para o tempo do objeto</param>
+        /// <returns></returns>
+        public static string ToString(this Stopwatch val, bool finalizeStopwatch)
+        {
+            string result = val.Elapsed.ToString();
+
+            if (finalizeStopwatch)
+            {
+                val.Stop();
+            }
+
+            return result;
+        }
     }
 }

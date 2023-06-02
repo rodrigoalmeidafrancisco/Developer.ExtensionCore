@@ -54,7 +54,7 @@ namespace Developer.ExtensionCore
         public static string ToCreateQrCodeBase64(this string valueQrCode, bool complete)
         {
             byte[] imageQrCode = valueQrCode.ToCreateQrCode();
-            string imageConvert = imageQrCode.ToBytesForBase64String();
+            string imageConvert = imageQrCode.ToBase64String();
             return complete ? $"data:image/png;base64,{imageConvert}" : imageConvert;
         }
 

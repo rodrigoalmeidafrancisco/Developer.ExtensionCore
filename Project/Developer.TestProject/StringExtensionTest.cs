@@ -1,5 +1,6 @@
 ﻿using Developer.ExtensionCore;
 using Developer.ExtensionCore.Enums;
+using System.Diagnostics;
 
 namespace Developer.TestProject
 {
@@ -61,10 +62,10 @@ namespace Developer.TestProject
         }
 
         [TestMethod]
-        public void Test_ToBytesForBase64String()
+        public void Test_ToBase64String()
         {
             byte[] val = new byte[] { 1, 3, 5, 7, 9, 10, 55, 100 };
-            string result = val.ToBytesForBase64String();
+            string result = val.ToBase64String();
             Assert.IsTrue(result != null);
         }
 
@@ -74,6 +75,18 @@ namespace Developer.TestProject
             string val = "número raça";
             string result = val.RemoveAccents();
             Assert.AreEqual("numero raca", result);
+        }
+
+        [TestMethod]
+        public async Task Test_ToString_Stopwatch()
+        {
+            Stopwatch val = new();
+            val.Start();
+
+            await Task.Delay(1000);
+
+            var result = val.ToString(true);
+            Assert.IsTrue(result.IsNullOrEmptyOrWhiteSpace() == false);
         }
 
     }

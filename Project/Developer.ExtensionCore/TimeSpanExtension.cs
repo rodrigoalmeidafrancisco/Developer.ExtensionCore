@@ -5,7 +5,7 @@ namespace Developer.ExtensionCore
     public static class TimeSpanExtension
     {
         /// <summary>
-        /// Retorna um TimeSpan (HH:MM:SS) a partir da data informada
+        /// Retorna a hora de um DateTime em um TimeSpan (HH:MM:SS).
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
