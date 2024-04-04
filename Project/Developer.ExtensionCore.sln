@@ -5,7 +5,13 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Developer.ExtensionCore", "Developer.ExtensionCore\Developer.ExtensionCore.csproj", "{EBF833BB-8E8A-4166-A35F-020527CBC7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Developer.TestProject", "Developer.TestProject\Developer.TestProject.csproj", "{7251974B-C34B-41BA-B3EF-F415A32E1998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Developer.TestProject", "Developer.TestProject\Developer.TestProject.csproj", "{7251974B-C34B-41BA-B3EF-F415A32E1998}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F41DBFE9-2C36-44DF-AE36-E723CF880F84}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

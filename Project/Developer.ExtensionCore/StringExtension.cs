@@ -293,5 +293,55 @@ namespace Developer.ExtensionCore
 
             return result;
         }
+
+        /// <summary>
+        /// Adiciona uma máscara de CPF (Brasil) para o valor informado.
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
+        public static string ToMaskCPF(this string valor)
+        {
+            if (valor.IsNullOrEmptyOrWhiteSpace() == false)
+            {
+                valor = valor.Replace(".", "").Replace("-", "");
+
+                if (valor.Length < 11)
+                {
+                    valor = valor.PadLeft(11, '0');
+                }
+
+                if (valor.Length == 11)
+                {
+                    valor = valor.Insert(3, ".").Insert(7, ".").Insert(11, "-");
+                }
+            }
+
+            return valor;
+        }
+
+        /// <summary>
+        /// Adiciona uma máscara de CNPJ (Brasil) para o valor informado.
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns></returns>
+        public static string ToMaskCNPJ(this string valor)
+        {
+            if (valor.IsNullOrEmptyOrWhiteSpace() == false)
+            {
+                valor = valor.Replace(".", "").Replace("/", "").Replace("-", "");
+
+                if (valor.Length < 14)
+                {
+                    valor = valor.PadLeft(14, '0');
+                }
+
+                if (valor.Length == 14)
+                {
+                    valor = valor.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
+                }
+            }
+
+            return valor;
+        }
     }
 }
