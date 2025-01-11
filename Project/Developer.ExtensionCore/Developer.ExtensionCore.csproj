@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>Developer.ExtensionCore</PackageId>
-		<Version>2.3.0</Version>
+		<Version>2.4.0</Version>
 		<Authors>Rodrigo de Almeida Francisco</Authors>
 		<Product>Developer.ExtensionCore</Product>
 		<Description>
