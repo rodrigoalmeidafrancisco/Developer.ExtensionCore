@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>Developer.ExtensionCore</PackageId>
-		<Version>2.4.0</Version>
+		<Version>3.0.0</Version>
 		<Authors>Rodrigo de Almeida Francisco</Authors>
 		<Product>Developer.ExtensionCore</Product>
 		<Description>
@@ -19,10 +19,9 @@
 			- GuidExtension
 			- IntExtension
 			- JwtExtension
+      - LinqExtension
 			- LongExtension
 			- NewtonsoftJsonExtension
-			- QrCodeExtension
-			- StreamExtension
 			- StringExtension
 			- SystemTextJsonExtension
 			- TimeSpanExtension
@@ -39,10 +38,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="QRCoder" Version="1.6.0" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
-		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
+		<PackageReference Include="System.Text.Json" Version="9.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>

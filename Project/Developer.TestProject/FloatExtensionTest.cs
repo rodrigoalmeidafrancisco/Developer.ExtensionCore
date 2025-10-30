@@ -8,43 +8,24 @@ namespace Developer.TestProject
     public class FloatExtensionTest
     {
         [TestMethod]
-        public void Test_ToDouble()
+        public void Test_ToFloat()
         {
-            string value = "14.500,00";
-            float result = value.ToFloat();
-            float expected = 14500;
-            Assert.AreEqual(expected, result);
-
-            result = value.ToFloat(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToFloat(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
+            "14.500,00".ToFloat().Should().Be(14500);
+            "14.500,00".ToFloat(NumberStyles.Number, "pt-BR").Should().Be(14500);
+            "14.500,00".ToFloat(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(14500);
         }
 
         [TestMethod]
-        public void Test_ToDoubleNull()
+        public void Test_ToFloatNull()
         {
-            string value = "14.500,00";
-            float? result = value.ToFloatNull();
-            float? expected = 14500;
-            Assert.AreEqual(expected, result);
+            "14.500,00".ToFloatNull().Should().Be(14500);
+            "14.500,00".ToFloatNull(NumberStyles.Number, "pt-BR").Should().Be(14500);
+            "14.500,00".ToFloatNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(14500);
 
-            result = value.ToFloatNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToFloatNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
-
-            value = null;
-            result = value.ToFloatNull();
-            Assert.AreEqual(null, result);
-
-            result = value.ToFloatNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(null, result);
-
-            result = value.ToFloatNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(null, result);
+            string? nullValue = null;
+            nullValue.ToFloatNull().Should().BeNull();
+            nullValue.ToFloatNull(NumberStyles.Number, "pt-BR").Should().BeNull();
+            nullValue.ToFloatNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().BeNull();
         }
     }
 }

@@ -39,9 +39,9 @@ namespace Developer.TestProject
 
             KeyValuePair<bool, string> result = await EmailExtension.SendMailAsync(emailSettings);
 
-            //Espera de um valor falso, pois não está preenchido corretamente as configurações.
-            Assert.IsFalse(result.Key);
+            // Espera de um valor falso, pois não está preenchido corretamente as configurações.
+            result.Key.Should().BeFalse();
+            result.Value.Should().NotBeNullOrWhiteSpace();
         }
-
     }
 }
