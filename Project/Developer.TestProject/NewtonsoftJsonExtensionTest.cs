@@ -23,24 +23,18 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_ToNewtonsoftSerializeJson()
         {
-            string json = _personTest.ToNewtonsoftSerializeJson();
-            Assert.IsTrue(json.IsNullOrEmptyOrWhiteSpace() == false);
-
-            json = _personTest.ToNewtonsoftSerializeJson(_options);
-            Assert.IsTrue(json.IsNullOrEmptyOrWhiteSpace() == false);
+            _personTest.ToNewtonsoftSerializeJson().Should().NotBeNullOrWhiteSpace();
+            _personTest.ToNewtonsoftSerializeJson(_options).Should().NotBeNullOrWhiteSpace();
         }
 
         [TestMethod]
         public void Test_ToNewtonsoftDeserializeJson()
         {
             string json = _personTest.ToNewtonsoftSerializeJson();
-            PersonTest personTest = json.ToNewtonsoftDeserializeJson<PersonTest>();
-            Assert.IsTrue(personTest != null);
+            json.ToNewtonsoftDeserializeJson<PersonTest>().Should().NotBeNull();
 
             json = _personTest.ToNewtonsoftSerializeJson(_options);
-            personTest = json.ToNewtonsoftDeserializeJson<PersonTest>(_options);
-            Assert.IsTrue(personTest != null);
+            json.ToNewtonsoftDeserializeJson<PersonTest>(_options).Should().NotBeNull();
         }
-
     }
 }

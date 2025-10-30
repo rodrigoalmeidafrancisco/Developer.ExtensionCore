@@ -9,30 +9,27 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_GetDescription()
         {
-            string description = EnumCultureInfo.Portuguese_Brazil.GetDescription();
-            Assert.AreEqual("pt-BR", description);
-
-            description = EnumExtension.GetDescription(EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual("pt-BR", description);
+            EnumCultureInfo.Portuguese_Brazil.GetDescription().Should().Be("pt-BR");
+            EnumExtension.GetDescription(EnumCultureInfo.Portuguese_Brazil).Should().Be("pt-BR");
         }
 
         [TestMethod]
         public void Test_GetListDescription()
         {
             var listDescription = EnumExtension.GetListDescription<EnumCultureInfo>();
-            Assert.IsTrue(listDescription != null && listDescription.Any());
+            listDescription.Should().NotBeNull().And.NotBeEmpty();
         }
 
         [TestMethod]
         public void Test_GetListDescriptionDropDown()
         {
             var listDescription = EnumExtension.GetListDescriptionDropDown<EnumCultureInfo>();
-            Assert.IsTrue(listDescription != null && listDescription.Any());
+            listDescription.Should().NotBeNull().And.NotBeEmpty();
 
             listDescription = EnumExtension.GetListDescriptionDropDown<EnumCultureInfo>(-10, "Select...");
-            Assert.IsTrue(listDescription != null && listDescription.Any());
-            Assert.IsTrue(listDescription.First().Key == -10);
+            listDescription.Should().NotBeNull().And.NotBeEmpty();
+            listDescription.First().Key.Should().Be(-10);
+            listDescription.First().Value.Should().Be("Select...");
         }
-
     }
 }

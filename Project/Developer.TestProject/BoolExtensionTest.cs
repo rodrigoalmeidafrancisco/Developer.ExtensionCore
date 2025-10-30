@@ -10,246 +10,135 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_IsNullOrEmpty()
         {
-            string value = "Test";
-            bool result = value.IsNullOrEmpty();
-            Assert.AreEqual(false, result);
+        string value = "Test";
+         value.IsNullOrEmpty().Should().BeFalse();
 
             value = "    ";
-            result = value.IsNullOrEmpty();
-            Assert.AreEqual(false, result);
+        value.IsNullOrEmpty().Should().BeFalse();
 
-            value = "";
-            result = value.IsNullOrEmpty();
-            Assert.AreEqual(true, result);
+        value = "";
+    value.IsNullOrEmpty().Should().BeTrue();
 
-            value = null;
-            result = value.IsNullOrEmpty();
-            Assert.AreEqual(true, result);
-        }
+       value = null;
+     value.IsNullOrEmpty().Should().BeTrue();
+  }
 
         [TestMethod]
         public void Test_IsNullOrWhiteSpace()
-        {
+ {
             string value = "Test";
-            bool result = value.IsNullOrWhiteSpace();
-            Assert.AreEqual(false, result);
+            value.IsNullOrWhiteSpace().Should().BeFalse();
 
-            value = "    ";
-            result = value.IsNullOrWhiteSpace();
-            Assert.AreEqual(true, result);
+         value = "    ";
+       value.IsNullOrWhiteSpace().Should().BeTrue();
 
             value = "";
-            result = value.IsNullOrWhiteSpace();
-            Assert.AreEqual(true, result);
+        value.IsNullOrWhiteSpace().Should().BeTrue();
 
-            value = null;
-            result = value.IsNullOrWhiteSpace();
-            Assert.AreEqual(true, result);
-        }
+   value = null;
+      value.IsNullOrWhiteSpace().Should().BeTrue();
+     }
 
-        [TestMethod]
+    [TestMethod]
         public void Test_IsNullOrEmptyOrWhiteSpace()
-        {
-            string value = "Test";
-            bool result = value.IsNullOrEmptyOrWhiteSpace();
-            Assert.AreEqual(false, result);
+     {
+   string value = "Test";
+        value.IsNullOrEmptyOrWhiteSpace().Should().BeFalse();
 
-            value = "    ";
-            result = value.IsNullOrEmptyOrWhiteSpace();
-            Assert.AreEqual(true, result);
+ value = "    ";
+            value.IsNullOrEmptyOrWhiteSpace().Should().BeTrue();
 
             value = "";
-            result = value.IsNullOrEmptyOrWhiteSpace();
-            Assert.AreEqual(true, result);
+        value.IsNullOrEmptyOrWhiteSpace().Should().BeTrue();
 
-            value = null;
-            result = value.IsNullOrEmptyOrWhiteSpace();
-            Assert.AreEqual(true, result);
-        }
+      value = null;
+    value.IsNullOrEmptyOrWhiteSpace().Should().BeTrue();
+     }
 
         [TestMethod]
         public void Test_StringOnlyNumbers()
         {
             string value = "Test22222";
-            bool result = value.StringOnlyNumbers();
-            Assert.AreEqual(false, result);
+          value.StringOnlyNumbers().Should().BeFalse();
 
-            value = "222222";
-            result = value.StringOnlyNumbers();
-            Assert.AreEqual(true, result);
+ value = "222222";
+  value.StringOnlyNumbers().Should().BeTrue();
         }
 
         [TestMethod]
         public void Test_StringOnlyCharacters()
-        {
-            string value = "Test";
-            bool result = value.StringOnlyCharacters();
-            Assert.AreEqual(true, result);
+     {
+   string value = "Test";
+ value.StringOnlyCharacters().Should().BeTrue();
 
             value = "Á ç É";
-            result = value.StringOnlyCharacters();
-            Assert.AreEqual(true, result);
+            value.StringOnlyCharacters().Should().BeTrue();
 
-            value = "Test22222";
-            result = value.StringOnlyCharacters();
-            Assert.AreEqual(false, result);
+     value = "Test22222";
+   value.StringOnlyCharacters().Should().BeFalse();
 
             value = "222222";
-            result = value.StringOnlyCharacters();
-            Assert.AreEqual(false, result);
+       value.StringOnlyCharacters().Should().BeFalse();
 
-            value = "  ";
-            result = value.StringOnlyCharacters();
-            Assert.AreEqual(false, result);
+         value = "  ";
+ value.StringOnlyCharacters().Should().BeFalse();
 
-            value = null;
-            result = value.StringOnlyCharacters();
-            Assert.AreEqual(false, result);
-        }
+     value = null;
+            value.StringOnlyCharacters().Should().BeFalse();
+  }
 
-        [TestMethod]
+    [TestMethod]
         public void Test_ValidCPF()
         {
-            string value = "136.018.540-23";
-            bool result = value.ValidCPF();
-            Assert.AreEqual(true, result);
+            "136.018.540-23".ValidCPF().Should().BeTrue();
+            "13601854023".ValidCPF().Should().BeTrue();
+     
+            "00000000000".ValidCPF().Should().BeFalse();
+        "11111111111".ValidCPF().Should().BeFalse();
+  "22222222222".ValidCPF().Should().BeFalse();
+        "33333333333".ValidCPF().Should().BeFalse();
+            "44444444444".ValidCPF().Should().BeFalse();
+            "55555555555".ValidCPF().Should().BeFalse();
+    "66666666666".ValidCPF().Should().BeFalse();
+      "77777777777".ValidCPF().Should().BeFalse();
+            "88888888888".ValidCPF().Should().BeFalse();
+   "99999999999".ValidCPF().Should().BeFalse();
+      }
 
-            value = "13601854023";
-            result = value.ValidCPF();
-            Assert.AreEqual(true, result);
-
-            value = "00000000000";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "11111111111";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "22222222222";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "33333333333";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "44444444444";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "55555555555";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "66666666666";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "77777777777";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "88888888888";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
-
-            value = "99999999999";
-            result = value.ValidCPF();
-            Assert.AreEqual(false, result);
+      [TestMethod]
+    public void Test_ValidCNPJ()
+ {
+            "18.556.359/0001-05".ValidCNPJ().Should().BeTrue();
+   "18556359000105".ValidCNPJ().Should().BeTrue();
+            
+  "00000000000000".ValidCNPJ().Should().BeFalse();
+            "11111111111111".ValidCNPJ().Should().BeFalse();
+  "22222222222222".ValidCNPJ().Should().BeFalse();
+    "33333333333333".ValidCNPJ().Should().BeFalse();
+          "44444444444444".ValidCNPJ().Should().BeFalse();
+ "55555555555555".ValidCNPJ().Should().BeFalse();
+            "66666666666666".ValidCNPJ().Should().BeFalse();
+         "77777777777777".ValidCNPJ().Should().BeFalse();
+   "88888888888888".ValidCNPJ().Should().BeFalse();
+         "99999999999999".ValidCNPJ().Should().BeFalse();
         }
 
         [TestMethod]
-        public void Test_ValidCNPJ()
-        {
-            string value = "18.556.359/0001-05";
-            bool result = value.ValidCNPJ();
-            Assert.AreEqual(true, result);
-
-            value = "18556359000105";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(true, result);
-
-            value = "00000000000000";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "11111111111111";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "22222222222222";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "33333333333333";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "44444444444444";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "55555555555555";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "66666666666666";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "77777777777777";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "88888888888888";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-
-            value = "99999999999999";
-            result = value.ValidCNPJ();
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_ValidEmail()
-        {
-            string value = "test@abc.com";
-            bool result = value.ValidEmail();
-            Assert.AreEqual(true, result);
-
-            value = "test@abc.com.br";
-            result = value.ValidEmail();
-            Assert.AreEqual(true, result);
-
-            value = "test@gmail.com";
-            result = value.ValidEmail();
-            Assert.AreEqual(true, result);
-
-            value = "t@gmail.com";
-            result = value.ValidEmail();
-            Assert.AreEqual(true, result);
-
-            value = "@gmail.com";
-            result = value.ValidEmail();
-            Assert.AreEqual(false, result);
-
-            value = "Test22222";
-            result = value.ValidEmail();
-            Assert.AreEqual(false, result);
-
-            value = "222222";
-            result = value.ValidEmail();
-            Assert.AreEqual(false, result);
-
-            value = "  ";
-            result = value.ValidEmail();
-            Assert.AreEqual(false, result);
-
-            value = null;
-            result = value.ValidEmail();
-            Assert.AreEqual(false, result);
-        }
+     public void Test_ValidEmail()
+      {
+          "test@abc.com".ValidEmail().Should().BeTrue();
+     "test@abc.com.br".ValidEmail().Should().BeTrue();
+        "test@gmail.com".ValidEmail().Should().BeTrue();
+            "t@gmail.com".ValidEmail().Should().BeTrue();
+      
+            "@gmail.com".ValidEmail().Should().BeFalse();
+   "Test22222".ValidEmail().Should().BeFalse();
+            "222222".ValidEmail().Should().BeFalse();
+    "  ".ValidEmail().Should().BeFalse();
+     
+    string? nullValue = null;
+          nullValue.ValidEmail().Should().BeFalse();
+     }
 
         #endregion string
 
@@ -258,593 +147,334 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_IsBetween_DateTime()
         {
-            DateTime value = new(2023, 01, 10);
-            DateTime valueStart = new(2023, 01, 01);
+ DateTime value = new(2023, 01, 10);
+       DateTime valueStart = new(2023, 01, 01);
             DateTime valueEnd = new(2023, 01, 15);
 
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
-
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
+value.IsBetween(valueStart, valueEnd).Should().BeTrue();
+      valueStart.IsBetween(value, valueEnd).Should().BeFalse();
 
             DateTime? valueNull = new(2023, 01, 10);
             DateTime? valueStartNull = new(2023, 01, 01);
             DateTime? valueEndNull = new(2023, 01, 15);
 
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
+            valueNull.IsBetween(valueStartNull, valueEndNull).Should().BeTrue();
+            valueStartNull.IsBetween(valueNull, valueEndNull).Should().BeFalse();
 
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
+          valueNull = null;
+         valueNull.IsBetween(valueStartNull, valueEndNull).Should().BeFalse();
         }
 
-        [TestMethod]
+ [TestMethod]
         public void Test_IsBetween_Int()
-        {
-            int value = 30;
-            int valueStart = 10;
-            int valueEnd = 50;
+    {
+    30.IsBetween(10, 50).Should().BeTrue();
+            10.IsBetween(30, 50).Should().BeFalse();
 
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
+     int? valueNull = 30;
+    valueNull.IsBetween(10, 50).Should().BeTrue();
 
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
-
-            int? valueNull = 30;
-            int? valueStartNull = 10;
-            int? valueEndNull = 50;
-
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
+  valueNull.IsBetween(10, 50).Should().BeFalse();
         }
 
         [TestMethod]
         public void Test_IsBetween_Long()
         {
-            long value = 30;
-            long valueStart = 10;
-            long valueEnd = 50;
+     30L.IsBetween(10L, 50L).Should().BeTrue();
+ 10L.IsBetween(30L, 50L).Should().BeFalse();
 
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
+    long? valueNull = 30;
+            valueNull.IsBetween(10L, 50L).Should().BeTrue();
 
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
-
-            long? valueNull = 30;
-            long? valueStartNull = 10;
-            long? valueEndNull = 50;
-
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
+          valueNull = null;
+          valueNull.IsBetween(10L, 50L).Should().BeFalse();
         }
 
         [TestMethod]
-        public void Test_IsBetween_Decimal()
+    public void Test_IsBetween_Decimal()
         {
-            decimal value = 30;
-            decimal valueStart = 10;
-            decimal valueEnd = 50;
-
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
-
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
+            30M.IsBetween(10M, 50M).Should().BeTrue();
+            10M.IsBetween(30M, 50M).Should().BeFalse();
 
             decimal? valueNull = 30;
-            decimal? valueStartNull = 10;
-            decimal? valueEndNull = 50;
+   valueNull.IsBetween(10M, 50M).Should().BeTrue();
 
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
-        }
+        valueNull = null;
+            valueNull.IsBetween(10M, 50M).Should().BeFalse();
+      }
 
         [TestMethod]
-        public void Test_IsBetween_float()
+      public void Test_IsBetween_Float()
+   {
+         30f.IsBetween(10f, 50f).Should().BeTrue();
+          10f.IsBetween(30f, 50f).Should().BeFalse();
+
+       float? valueNull = 30;
+      valueNull.IsBetween(10f, 50f).Should().BeTrue();
+
+    valueNull = null;
+  valueNull.IsBetween(10f, 50f).Should().BeFalse();
+   }
+
+   [TestMethod]
+  public void Test_IsBetween_Double()
         {
-            float value = 30;
-            float valueStart = 10;
-            float valueEnd = 50;
+  30d.IsBetween(10d, 50d).Should().BeTrue();
+     10d.IsBetween(30d, 50d).Should().BeFalse();
 
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
+    double? valueNull = 30;
+valueNull.IsBetween(10d, 50d).Should().BeTrue();
 
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
-
-            float? valueNull = 30;
-            float? valueStartNull = 10;
-            float? valueEndNull = 50;
-
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
-        }
+            valueNull.IsBetween(10d, 50d).Should().BeFalse();
+    }
 
         [TestMethod]
-        public void Test_IsBetween_double()
-        {
-            double value = 30;
-            double valueStart = 10;
-            double valueEnd = 50;
-
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
-
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
-
-            double? valueNull = 30;
-            double? valueStartNull = 10;
-            double? valueEndNull = 50;
-
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_IsBetween_TimeSpan()
+public void Test_IsBetween_TimeSpan()
         {
             TimeSpan value = new(10, 00, 00);
-            TimeSpan valueStart = new(05, 00, 00);
+         TimeSpan valueStart = new(05, 00, 00);
             TimeSpan valueEnd = new(15, 00, 00);
 
-            bool result = value.IsBetween(valueStart, valueEnd);
-            Assert.AreEqual(true, result);
+    value.IsBetween(valueStart, valueEnd).Should().BeTrue();
+            valueStart.IsBetween(value, valueEnd).Should().BeFalse();
 
-            result = valueStart.IsBetween(value, valueEnd);
-            Assert.AreEqual(false, result);
+    TimeSpan? valueNull = new(10, 00, 00);
+ valueNull.IsBetween(valueStart, valueEnd).Should().BeTrue();
 
-            TimeSpan? valueNull = new(10, 00, 00);
-            TimeSpan? valueStartNull = new(05, 00, 00);
-            TimeSpan? valueEndNull = new(15, 00, 00);
-
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(true, result);
-
-            result = valueStartNull.IsBetween(valueNull, valueEndNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsBetween(valueStartNull, valueEndNull);
-            Assert.AreEqual(false, result);
+valueNull = null;
+      valueNull.IsBetween(valueStart, valueEnd).Should().BeFalse();
         }
 
-        #endregion IsBetween
+      #endregion IsBetween
 
         #region IsGreaterThan
 
         [TestMethod]
         public void Test_IsGreaterThan_DateTime()
-        {
-            DateTime value = new(2023, 01, 10);
+    {
+       DateTime value = new(2023, 01, 10);
             DateTime compare = new(2023, 01, 01);
 
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
+       value.IsGreaterThan(compare).Should().BeTrue();
+ compare.IsGreaterThan(value).Should().BeFalse();
 
             DateTime? valueNull = new(2023, 01, 10);
-            DateTime? compareNull = new(2023, 01, 01);
+  valueNull.IsGreaterThan(compare).Should().BeTrue();
 
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
+   valueNull = null;
+        valueNull.IsGreaterThan(compare).Should().BeFalse();
+ }
 
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
+    [TestMethod]
+   public void Test_IsGreaterThan_Int()
+        {
+ 50.IsGreaterThan(15).Should().BeTrue();
+        15.IsGreaterThan(50).Should().BeFalse();
 
-            //Qualquer valor nulo, retorna false.
+  int? valueNull = 50;
+            valueNull.IsGreaterThan(15).Should().BeTrue();
+
+  valueNull = null;
+            valueNull.IsGreaterThan(15).Should().BeFalse();
+        }
+
+  [TestMethod]
+  public void Test_IsGreaterThan_Long()
+        {
+            50L.IsGreaterThan(15L).Should().BeTrue();
+   15L.IsGreaterThan(50L).Should().BeFalse();
+
+  long? valueNull = 50;
+   valueNull.IsGreaterThan(15L).Should().BeTrue();
+
             valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
+            valueNull.IsGreaterThan(15L).Should().BeFalse();
         }
 
         [TestMethod]
-        public void Test_IsGreaterThan_int()
+        public void Test_IsGreaterThan_Decimal()
         {
-            int value = 50;
-            int compare = 15;
-
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
-
-            int? valueNull = 50;
-            int? compareNull = 15;
-
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_IsGreaterThan_long()
-        {
-            long value = 50;
-            long compare = 15;
-
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
-
-            long? valueNull = 50;
-            long? compareNull = 15;
-
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_IsGreaterThan_decimal()
-        {
-            decimal value = 50;
-            decimal compare = 15;
-
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
+      50M.IsGreaterThan(15M).Should().BeTrue();
+  15M.IsGreaterThan(50M).Should().BeFalse();
 
             decimal? valueNull = 50;
-            decimal? compareNull = 15;
+  valueNull.IsGreaterThan(15M).Should().BeTrue();
 
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
+  valueNull = null;
+            valueNull.IsGreaterThan(15M).Should().BeFalse();
         }
 
         [TestMethod]
-        public void Test_IsGreaterThan_float()
-        {
-            float value = 50;
-            float compare = 15;
-
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
+public void Test_IsGreaterThan_Float()
+      {
+       50f.IsGreaterThan(15f).Should().BeTrue();
+            15f.IsGreaterThan(50f).Should().BeFalse();
 
             float? valueNull = 50;
-            float? compareNull = 15;
+     valueNull.IsGreaterThan(15f).Should().BeTrue();
 
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
+        valueNull = null;
+        valueNull.IsGreaterThan(15f).Should().BeFalse();
+   }
 
         [TestMethod]
-        public void Test_IsGreaterThan_double()
+        public void Test_IsGreaterThan_Double()
         {
-            double value = 50;
-            double compare = 15;
-
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
+            50d.IsGreaterThan(15d).Should().BeTrue();
+        15d.IsGreaterThan(50d).Should().BeFalse();
 
             double? valueNull = 50;
-            double? compareNull = 15;
+            valueNull.IsGreaterThan(15d).Should().BeTrue();
 
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
+            valueNull.IsGreaterThan(15d).Should().BeFalse();
         }
 
-        [TestMethod]
+      [TestMethod]
         public void Test_IsGreaterThan_TimeSpan()
         {
             TimeSpan value = new(10, 00, 00);
             TimeSpan compare = new(05, 00, 00);
 
-            bool result = value.IsGreaterThan(compare);
-            Assert.AreEqual(true, result);
-
-            result = compare.IsGreaterThan(value);
-            Assert.AreEqual(false, result);
+    value.IsGreaterThan(compare).Should().BeTrue();
+       compare.IsGreaterThan(value).Should().BeFalse();
 
             TimeSpan? valueNull = new(10, 00, 00);
-            TimeSpan? compareNull = new(05, 00, 00);
+  valueNull.IsGreaterThan(compare).Should().BeTrue();
 
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(true, result);
-
-            result = compareNull.IsGreaterThan(valueNull);
-            Assert.AreEqual(false, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsGreaterThan(compareNull);
-            Assert.AreEqual(false, result);
+     valueNull = null;
+  valueNull.IsGreaterThan(compare).Should().BeFalse();
         }
 
         #endregion IsGreaterThan
 
-        #region IsLowerThan
+      #region IsLowerThan
+
+  [TestMethod]
+      public void Test_IsLowerThan_DateTime()
+    {
+          DateTime value = new(2023, 01, 10);
+     DateTime compare = new(2023, 01, 01);
+
+      value.IsLowerThan(compare).Should().BeFalse();
+          compare.IsLowerThan(value).Should().BeTrue();
+
+   DateTime? valueNull = new(2023, 01, 01);
+      valueNull.IsLowerThan(value).Should().BeTrue();
+
+  valueNull = null;
+       valueNull.IsLowerThan(value).Should().BeFalse();
+}
 
         [TestMethod]
-        public void Test_IsLowerThan_DateTime()
+        public void Test_IsLowerThan_Int()
         {
-            DateTime value = new(2023, 01, 10);
-            DateTime compare = new(2023, 01, 01);
+  50.IsLowerThan(15).Should().BeFalse();
+            15.IsLowerThan(50).Should().BeTrue();
 
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
+            int? valueNull = 15;
+            valueNull.IsLowerThan(50).Should().BeTrue();
 
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            DateTime? valueNull = new(2023, 01, 10);
-            DateTime? compareNull = new(2023, 01, 01);
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
+            valueNull.IsLowerThan(50).Should().BeFalse();
+    }
+
+    [TestMethod]
+        public void Test_IsLowerThan_Long()
+        {
+        50L.IsLowerThan(15L).Should().BeFalse();
+            15L.IsLowerThan(50L).Should().BeTrue();
+
+          long? valueNull = 15;
+         valueNull.IsLowerThan(50L).Should().BeTrue();
+
+  valueNull = null;
+        valueNull.IsLowerThan(50L).Should().BeFalse();
         }
 
         [TestMethod]
-        public void Test_IsLowerThan_int()
+        public void Test_IsLowerThan_Decimal()
         {
-            int value = 50;
-            int compare = 15;
+      50M.IsLowerThan(15M).Should().BeFalse();
+    15M.IsLowerThan(50M).Should().BeTrue();
 
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
+decimal? valueNull = 15;
+          valueNull.IsLowerThan(50M).Should().BeTrue();
 
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            int? valueNull = 50;
-            int? compareNull = 15;
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
+ valueNull.IsLowerThan(50M).Should().BeFalse();
+   }
 
         [TestMethod]
-        public void Test_IsLowerThan_long()
+        public void Test_IsLowerThan_Float()
         {
-            long value = 50;
-            long compare = 15;
+     50f.IsLowerThan(15f).Should().BeFalse();
+            15f.IsLowerThan(50f).Should().BeTrue();
 
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
+            float? valueNull = 15;
+   valueNull.IsLowerThan(50f).Should().BeTrue();
 
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            long? valueNull = 50;
-            long? compareNull = 15;
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
             valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
+     valueNull.IsLowerThan(50f).Should().BeFalse();
+      }
 
         [TestMethod]
-        public void Test_IsLowerThan_decimal()
+        public void Test_IsLowerThan_Double()
         {
-            decimal value = 50;
-            decimal compare = 15;
+            50d.IsLowerThan(15d).Should().BeFalse();
+          15d.IsLowerThan(50d).Should().BeTrue();
 
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
+       double? valueNull = 15;
+            valueNull.IsLowerThan(50d).Should().BeTrue();
 
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            decimal? valueNull = 50;
-            decimal? compareNull = 15;
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_IsLowerThan_float()
-        {
-            float value = 50;
-            float compare = 15;
-
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
-
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            float? valueNull = 50;
-            float? compareNull = 15;
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
-
-        [TestMethod]
-        public void Test_IsLowerThan_double()
-        {
-            double value = 50;
-            double compare = 15;
-
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
-
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
-
-            double? valueNull = 50;
-            double? compareNull = 15;
-
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
-
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
+          valueNull = null;
+      valueNull.IsLowerThan(50d).Should().BeFalse();
+  }
 
         [TestMethod]
         public void Test_IsLowerThan_TimeSpan()
-        {
-            TimeSpan value = new(10, 00, 00);
-            TimeSpan compare = new(05, 00, 00);
+  {
+  TimeSpan value = new(10, 00, 00);
+ TimeSpan compare = new(05, 00, 00);
 
-            bool result = value.IsLowerThan(compare);
-            Assert.AreEqual(false, result);
+    value.IsLowerThan(compare).Should().BeFalse();
+       compare.IsLowerThan(value).Should().BeTrue();
 
-            result = compare.IsLowerThan(value);
-            Assert.AreEqual(true, result);
+            TimeSpan? valueNull = new(05, 00, 00);
+    valueNull.IsLowerThan(value).Should().BeTrue();
 
-            TimeSpan? valueNull = new(10, 00, 00);
-            TimeSpan? compareNull = new(05, 00, 00);
+      valueNull = null;
+          valueNull.IsLowerThan(value).Should().BeFalse();
+     }
 
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
+      #endregion IsLowerThan
 
-            result = compareNull.IsLowerThan(valueNull);
-            Assert.AreEqual(true, result);
+        #region IsList
 
-            //Qualquer valor nulo, retorna false.
-            valueNull = null;
-            result = valueNull.IsLowerThan(compareNull);
-            Assert.AreEqual(false, result);
-        }
+        [TestMethod]
+        public void Test_IsList()
+  {
+            var list = new List<int> { 1, 2, 3 };
+     list.IsList().Should().BeTrue();
 
-        #endregion IsLowerThan
+     IList<string> iList = new List<string> { "a", "b" };
+       iList.IsList().Should().BeTrue();
 
+       IEnumerable<int> enumerable = new List<int> { 1, 2, 3 };
+enumerable.IsList().Should().BeTrue();
+
+            IReadOnlyCollection<int> readOnly = new List<int> { 1, 2, 3 };
+         readOnly.IsList().Should().BeTrue();
+
+            int singleValue = 42;
+  singleValue.IsList().Should().BeFalse();
+
+         string text = "test";
+ text.IsList().Should().BeFalse();
+     }
+
+        #endregion IsList
     }
 }

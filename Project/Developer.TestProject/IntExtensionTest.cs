@@ -10,52 +10,27 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_ToInt()
         {
-            string value = "1500";
-            int result = value.ToInt();
-            int expected = 1500;
-            Assert.AreEqual(expected, result);
-
-            result = value.ToInt(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToInt(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
-
-            result = EnumCultureInfo.Portuguese_Brazil.ToInt();
-            Assert.AreEqual(429, result);
+            "1500".ToInt().Should().Be(1500);
+            "1500".ToInt(NumberStyles.Number, "pt-BR").Should().Be(1500);
+            "1500".ToInt(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(1500);
+            EnumCultureInfo.Portuguese_Brazil.ToInt().Should().Be(429);
         }
 
         [TestMethod]
         public void Test_ToIntNull()
         {
-            string value = "1500";
-            int? result = value.ToIntNull();
-            int? expected = 1500;
-            Assert.AreEqual(expected, result);
+            "1500".ToIntNull().Should().Be(1500);
+            "1500".ToIntNull(NumberStyles.Number, "pt-BR").Should().Be(1500);
+            "1500".ToIntNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(1500);
+            EnumCultureInfo.Portuguese_Brazil.ToIntNull().Should().Be(429);
 
-            result = value.ToIntNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToIntNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
-
-            result = EnumCultureInfo.Portuguese_Brazil.ToIntNull();
-            Assert.AreEqual(429, result);
-
-            value = null;
-            result = value.ToIntNull();
-            Assert.AreEqual(null, result);
-
-            result = value.ToIntNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(null, result);
-
-            result = value.ToIntNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(null, result);
+            string? nullValue = null;
+            nullValue.ToIntNull().Should().BeNull();
+            nullValue.ToIntNull(NumberStyles.Number, "pt-BR").Should().BeNull();
+            nullValue.ToIntNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().BeNull();
 
             EnumCultureInfo? cultureInfo = null;
-            result = cultureInfo.ToIntNull();
-            Assert.AreEqual(null, result);
+            cultureInfo.ToIntNull().Should().BeNull();
         }
-
     }
 }

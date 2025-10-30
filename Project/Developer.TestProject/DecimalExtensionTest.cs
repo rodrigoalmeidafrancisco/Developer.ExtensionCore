@@ -10,42 +10,22 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_ToDecimal()
         {
-            string value = "14.500,00";
-            decimal result = value.ToDecimal();
-            decimal expected = 14500.00M;   
-            Assert.AreEqual(expected, result);
-
-            result = value.ToDecimal(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToDecimal(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
+            "14.500,00".ToDecimal().Should().Be(14500.00M);
+            "14.500,00".ToDecimal(NumberStyles.Number, "pt-BR").Should().Be(14500.00M);
+            "14.500,00".ToDecimal(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(14500.00M);
         }
 
         [TestMethod]
         public void Test_ToDecimalNull()
         {
-            string value = "14.500,00";
-            decimal? result = value.ToDecimalNull();
-            decimal? expected = 14500.00M;
-            Assert.AreEqual(expected, result);
+            "14.500,00".ToDecimalNull().Should().Be(14500.00M);
+            "14.500,00".ToDecimalNull(NumberStyles.Number, "pt-BR").Should().Be(14500.00M);
+            "14.500,00".ToDecimalNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().Be(14500.00M);
 
-            result = value.ToDecimalNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(expected, result);
-
-            result = value.ToDecimalNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(expected, result);
-
-            value = null;
-            result = value.ToDecimalNull();
-            Assert.AreEqual(null, result);
-
-            result = value.ToDecimalNull(NumberStyles.Number, "pt-BR");
-            Assert.AreEqual(null, result);
-
-            result = value.ToDecimalNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil);
-            Assert.AreEqual(null, result);
+            string? nullValue = null;
+            nullValue.ToDecimalNull().Should().BeNull();
+            nullValue.ToDecimalNull(NumberStyles.Number, "pt-BR").Should().BeNull();
+            nullValue.ToDecimalNull(NumberStyles.Number, EnumCultureInfo.Portuguese_Brazil).Should().BeNull();
         }
-
     }
 }

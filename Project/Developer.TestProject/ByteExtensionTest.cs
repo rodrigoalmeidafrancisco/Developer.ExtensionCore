@@ -9,55 +9,35 @@ namespace Developer.TestProject
         [TestMethod]
         public void Test_ToByte()
         {
-            string value = "1";
-            byte result = value.ToByte();
-            Assert.AreEqual(1, result);
+            "1".ToByte().Should().Be(1);
+            "   ".ToByte().Should().Be(0);
+            "".ToByte().Should().Be(0);
 
-            value = "   ";
-            result = value.ToByte();
-            Assert.AreEqual(0, result);
-
-            value = "";
-            result = value.ToByte();
-            Assert.AreEqual(0, result);
-
-            value = null;
-            result = value.ToByte();
-            Assert.AreEqual(0, result);
+            string? nullValue = null;
+            nullValue.ToByte().Should().Be(0);
         }
 
         [TestMethod]
         public void Test_ToByteNull()
         {
-            string value = "1";
-            byte? result = value.ToByteNull();
-            Assert.AreEqual(1, result.Value);
+            "1".ToByteNull().Should().Be(1);
+            "   ".ToByteNull().Should().BeNull();
+            "".ToByteNull().Should().BeNull();
 
-            value = "   ";
-            result = value.ToByteNull();
-            Assert.AreEqual(null, result);
-
-            value = "";
-            result = value.ToByteNull();
-            Assert.AreEqual(null, result);
-
-            value = null;
-            result = value.ToByteNull();
-            Assert.AreEqual(null, result);
+            string? nullValue = null;
+            nullValue.ToByteNull().Should().BeNull();
         }
 
         [TestMethod]
         public void Test_ToByte_Enum()
         {
-            byte result = EnumCultureInfo.Afar_Djibouti.ToByte();
-            Assert.AreEqual(1, result);
+            EnumCultureInfo.Afar_Djibouti.ToByte().Should().Be(1);
         }
 
         [TestMethod]
         public void Test_ToByteNull_Enum()
         {
-            byte? result = EnumCultureInfo.Afar_Djibouti.ToByteNull();
-            Assert.AreEqual(1, result.Value);
+            EnumCultureInfo.Afar_Djibouti.ToByteNull().Should().Be(1);
         }
 
         [TestMethod]
@@ -67,7 +47,7 @@ namespace Developer.TestProject
             using (FileStream fileStream = File.Open(pathFile, FileMode.Open))
             {
                 var fileInBytes = fileStream.ToBytes();
-                Assert.AreNotEqual(null, fileInBytes);
+                fileInBytes.Should().NotBeNull();
             }
         }
 
@@ -76,7 +56,7 @@ namespace Developer.TestProject
         {
             string pathFile = @"FilesTest\ImageTest.png";
             byte[] fileInBytes = pathFile.ToBytesPathFile();
-            Assert.AreNotEqual(null, fileInBytes);
+            fileInBytes.Should().NotBeNull();
         }
     }
 }
