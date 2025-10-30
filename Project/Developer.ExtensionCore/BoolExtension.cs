@@ -1,5 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Developer.ExtensionCore
 {
@@ -870,5 +871,20 @@ namespace Developer.ExtensionCore
 
         #endregion IsLowerThan
 
+        public static bool IsList<T>(this T obj)
+        {
+            if (typeof(T).IsGenericType)
+            {
+                if (typeof(T).GetGenericTypeDefinition() == typeof(IList<>) ||
+                    typeof(T).GetGenericTypeDefinition() == typeof(List<>) ||
+                    typeof(T).GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
+                    typeof(T).GetGenericTypeDefinition() == typeof(IReadOnlyCollection<>))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
