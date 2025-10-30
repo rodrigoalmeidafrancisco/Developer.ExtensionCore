@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+ <RunConfiguration>
+ <ResultsDirectory>TestResults</ResultsDirectory>
+ <TargetFrameworkVersion>net9.0</TargetFrameworkVersion>
+ <CollectSourceInformation>true</CollectSourceInformation>
+ </RunConfiguration>
+ <DataCollectionRunSettings>
+ <DataCollectors>
+ <DataCollector friendlyName="XPlat code coverage">
+ <Configuration>
+ <Format>cobertura,lcov,opencover</Format>
+ <Exclude>[
+ "[Developer.TestProject]*",
+ "[xunit.*]*",
+ "[MSTest.*]*"
+ ]</Exclude>
+ <Include>[
+ "[Developer.ExtensionCore]*"
+ ]</Include>
+ <SingleHit>false</SingleHit>
+ </Configuration>
+ </DataCollector>
+ </DataCollectors>
+ </DataCollectionRunSettings>
+ <MSTest>
+ <Parallelize>
+ <Workers>0</Workers>
+ <Scope>ClassLevel</Scope>
+ </Parallelize>
+ <MapInconclusiveToFailed>true</MapInconclusiveToFailed>
+ </MSTest>
+</RunSettings>
